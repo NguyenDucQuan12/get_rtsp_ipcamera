@@ -7,7 +7,7 @@ Nhấn `Ctrl+Shift+P` và tìm kiếm `Python: Select interpreter` như ảnh d�
 Chọn thư mục chứa môi trường ảo và chọn phiên bản python phù hợp:  
 <img src="https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/72e84611-498d-44df-9875-c90a97dc83b2">  
 Xong nhấn `F5` để debug  
-## Cách 2
+## Cách 2  
 * Thêm file `launch.json`
 Nhấn vào tab `debug` bên trái và chọn mũi tên xuống dưới để thêm file `launch.json`:  
 <img src="https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/b1729e14-5f8a-470b-913d-ad4f6e276335">  
