@@ -18,4 +18,4 @@ Nếu xuất hiện lỗi: `pip: Fatal error in ...` thì chạy 2 lệnh sau đ
 `python -m pip install --upgrade --force -reinstall pip`  
 `python -m pip freeze`  
 Bước 5: Chạy phần mềm:  
-`pyhon .camera_app\main.py`
+`pyhon .camera_app\main.py`  lần đầu sẽ tìm kiếm các ip, từ lần sau sẽ tự động hiển thị các ip đã có
