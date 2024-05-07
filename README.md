@@ -1,6 +1,8 @@
 # get_rtsp_ipcamera
 Tự động tìm  kiếm các ip của camera và kết nối camera (tối đa 6 thiết bị camera)
 ## Bắt đầu:
+Tải về thư mục `DucQuan` và giải nén ra  
+Mở `Visual studio code` --> `Add folder to workspace` --> add DucQuan  
 Bước 1: Tạo môi trường ảo `.camera_venv` bên trong thư mục `DucQuan`  
 `python -m venv .camera_app prompt="venv_camera"`  
 Bước 2: Kích hoạt môi trường ảo  
