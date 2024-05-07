@@ -14,4 +14,6 @@ Bước 4: Cài đặt các thư viện cần thiết
 Nếu có chỉnh sửa, thay đổi thư viện thì thêm vào file bằng câu lệnh sau: `python -m pip freeze > requirements.txt`  
 Nếu xuất hiện lỗi: `pip: Fatal error in ...` thì chạy 2 lệnh sau để khắc phục lỗi:  
 `python -m pip install --upgrade --force -reinstall pip`  
-`python -m pip freeze`
+`python -m pip freeze`  
+Bước 5: Chạy phần mềm:  
+`pyhon .camera_app\main.py`
