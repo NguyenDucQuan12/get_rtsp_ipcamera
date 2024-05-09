@@ -9,7 +9,7 @@ Bước 1: Tạo môi trường ảo `.camera_venv` bên trong thư mục `DucQu
 `python -m venv .camera_app prompt="venv_camera"` hoặc `C:\Users\Administrator\AppData\Local\Programs\Python\Python311\python.exe -m venv .camera_app prompt="venv_camera` Cách sau là dành cho các trường hợp chỉ định phiên bản python cụ thể, khi mà môi trường của bạn có nhiều phiên bản python  
 Bước 2: Kích hoạt môi trường ảo:  
 `.camera_app\Scripts\activate`  
-Nếu mà không kích hoạt được ở `terminal` thì cần chạy lệnh này trước khi chạy lại lệnh trên: `Set-ExcutionPolicy RemoteSigned-Scope CurrentUser`  
+Nếu mà không kích hoạt được ở `terminal` thì cần chạy lệnh này trước khi chạy lại lệnh trên: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`  
 Bước 3: Chuyển tất cả các file trong thư mục `DucQuan` vào thư mục `.camera_app`, lưu ý để lại file `requirements.txt`  
 Bước 4: Cài đặt các thư viện cần thiết:  
 `python -m pip install -r requirements.txt`  
