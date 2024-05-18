@@ -2,14 +2,17 @@ import PIL.ImageTk, PIL.Image
 import cv2
 import tkinter
 from stream_camera import VideoCapture
+from setting import Setting
 
 class Camera_GUI (tkinter.Frame):
     def __init__(self, parent, text="", source=0, camera = None):
 
         super().__init__(parent)
 
+
         self.source = source
         self.camera = camera
+        self.text = text
         # Khởi tạo các giá trị ban đầu
         default_image_ = PIL.Image.open(".camera_app/image/default_image.png")
         self.default_image= PIL.ImageTk.PhotoImage(default_image_)
@@ -55,7 +58,7 @@ class Camera_GUI (tkinter.Frame):
         self.btn_view.pack(anchor='center', side='left', expand=True)
         
         # Button that lets the user take a snapshot
-        self.btn_view = tkinter.Button(self.frame_toan_canh, text="Thông tin", cursor= "hand2", border = 5, command=self.setting_camera)
+        self.btn_view = tkinter.Button(self.frame_toan_canh, text="Cài đặt", cursor= "hand2", border = 5, command=self.setting_camera)
         self.btn_view.pack(anchor='center', side='left', expand=True)
     
     def update_frame(self):
@@ -97,15 +100,16 @@ class Camera_GUI (tkinter.Frame):
         self.btn_stop_recording["state"] = "disable"
     
     def view(self):
-        another_window(self.vid, True, "me")
+        another_window(self.vid, True, self.text)
     
     def snapshot(self):
         self.vid.snapshot()
         
     def setting_camera(self):
-        self.camera.setting_now()
-        self.camera.media_profile_configuration()
-            
+        app = Setting(onvif_camera = self.camera)
+        # self.camera.setting_now()
+        # self.camera.media_profile_configuration()
+         
 class another_window():
 
     def __init__(self, source, quickview, text =""):
@@ -115,7 +119,7 @@ class another_window():
         self.quickview = quickview
         
         self.window = tkinter.Toplevel()
-        self.window.title("sys_quickview")
+        self.window.title("Chế độ màn hình lớn")
         self.window.iconbitmap(".camera_app/image/app.ico")
         self.window.geometry("1000x800")
         

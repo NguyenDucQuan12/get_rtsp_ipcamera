@@ -30,7 +30,8 @@ class App:
 
         print("[App] stoping threads")
         for widget in self.stream_widgets:
-            widget.vid.running = False
+            # widget.vid.running = False
+            widget.vid.release_function()
 
         print("[App] exit")
         self.parent.destroy()

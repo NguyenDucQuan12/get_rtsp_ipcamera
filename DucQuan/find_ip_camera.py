@@ -28,6 +28,8 @@ def check_rtsp(ip= None, ip_full = None):
     else:
         ipv4 = ip_full
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # socket.AF_INET là tham số truyền vào IP phiên bản 4 IPv4
+    # socket.SOCK_STREAM là tham số chỉ loại kết nối TCP IP
     sock.settimeout(SOCKET_TIMEOUT)
     exitcode = sock.connect_ex((ipv4, RTSP_PORT))
     sock.close()
@@ -49,10 +51,31 @@ class Find_ip_camera(object):
         
         start_label = tk.Label(self.window, text="Phần mềm chỉ dò tìm được các camera có chuẩn ONVIF")
         start_label.pack()
-        start_label = tk.Label(self.window, text="Để đảm bảo kết nối ổn định, chỉ kết nối cùng lúc tối đa 6 camera")
+        start_label = tk.Label(self.window, text="Để đảm bảo tối ưu CPU, chỉ kết nối cùng lúc tối đa 6 camera")
         start_label.pack()
         start_label = tk.Label(self.window, text="Quá trình tìm kiếm chưa đến 2 phút, vui lòng đợi")
         start_label.pack()
+        
+        self.widget_label = {}
+        self.camera_label_1 = tk.Label(self.window, text="")
+        self.camera_label_1.pack()
+        self.widget_label["1"] = self.camera_label_1
+        self.camera_label_2 = tk.Label(self.window, text="")
+        self.camera_label_2.pack()
+        self.widget_label["2"] = self.camera_label_2
+        self.camera_label_3 = tk.Label(self.window, text="")
+        self.camera_label_3.pack()
+        self.widget_label["3"] = self.camera_label_3
+        self.camera_label_4 = tk.Label(self.window, text="")
+        self.camera_label_4.pack()
+        self.widget_label["4"] = self.camera_label_4
+        self.camera_label_5 = tk.Label(self.window, text="")
+        self.camera_label_5.pack()
+        self.widget_label["5"] = self.camera_label_5
+        self.camera_label_6 = tk.Label(self.window, text="")
+        self.camera_label_6.pack()
+        self.widget_label["6"] = self.camera_label_6
+        
         
         self.show_ip_text = tk.StringVar()
         self.get_ip_button = tk.Button(self.window, textvariable= self.show_ip_text, background= "tomato", cursor="hand2", command= lambda: self.find_ip(reload=True))
@@ -60,7 +83,7 @@ class Find_ip_camera(object):
         self.get_ip_button.pack()
         
         self.connect_camera = tk.Button(self.window, text= "Kết nối với các camera tìm được", cursor="hand2", command = self.connect_ip_camera)
-        self.end_label = tk.Label(self.window, text="Không tìm thấy camera nào cả, kiểm tra lại kết nối ethernet")
+        self.connect_camera.pack()
         
         get_license_in_thread = threading.Thread(target=self.find_rtsp_ips)
         get_license_in_thread.daemon = True
@@ -85,9 +108,8 @@ class Find_ip_camera(object):
                     self.find_rtsp_ips_2(self.rtsp_ips)
                 else:
                     self.show_ip_text.set("Bấm để tìm kiếm thêm ip")
-                    for ip in self.rtsp_ips:
-                        self.show_result(ip)
-                    self.connect_camera.pack()
+                    self.show_result(self.rtsp_ips)
+                    
         except Exception as e:
             print(f"Lỗi khi đọc tệp JSON: {e}")
         
@@ -97,9 +119,12 @@ class Find_ip_camera(object):
             get_license_in_thread = threading.Thread(target=self.find_rtsp_ips_2, args=(self.rtsp_ips,))
             get_license_in_thread.start()
             
-    def show_result(self, ip):
-        ip_label = tk.Label(self.window, text=ip)
-        ip_label.pack()
+    def show_result(self, ip_list):
+        for number, ip in enumerate(ip_list):
+            number = str(number+1)
+            self.widget_label[number].config(text=ip)
+            # self.camera_label_1.config(text=ip)
+        
     
     def find_rtsp_ips_2(self,rtsp_ips):
         self.get_ip_button["state"] = "disable"
@@ -108,20 +133,26 @@ class Find_ip_camera(object):
         num_threads = 10
         with ThreadPoolExecutor(max_workers=num_threads) as executor:
             # Tạo danh sách các cặp (ip_index, ip)
+            for number in range(6):
+                number = str(number+1)
+                self.widget_label[number].config(text="")
             ip_combinations = product(range(0, 255), repeat=2)
             # Thực hiện kiểm tra RTSP cho từng cặp IP trong danh sách bằng cách sử dụng executor map
             # results= executor.map(check_rtsp, ip_combinations) # Chỉ trả về 1 giá trị
             results = list(executor.map(check_rtsp, ip_combinations)) # Trả về nhiều giá trị
-            i=1
-            for ipv4, status in results:
+            number = 0
+            for (ipv4, status) in (results):
                 if status:
-                    if i==7:
+                    number += 1
+                    print("number:",number)
+                    if number==7:
                         break
+                    number_cam = str(number)
+                    self.widget_label[number_cam].config(text=ipv4)
                     if ipv4 in rtsp_ips:
-                        i+=1
                         continue
                     rtsp_ips.append(ipv4)
-                    ip_key = f'IP_cam{i}'
+                    ip_key = f'IP_cam{number}'
                     self.data['camera'][ip_key] = ipv4
                     with open(json_filename, 'w') as outfile:
                         json.dump(self.data, outfile, indent=4)
@@ -138,6 +169,6 @@ class Find_ip_camera(object):
             print(self.sources)
         # Mở phần mềm
         self.window.destroy()
-        self.object(tk.Tk(), "Dức Quân", self.sources)
+        self.object(tk.Tk(), "Đức Quân", self.sources)
 
     
