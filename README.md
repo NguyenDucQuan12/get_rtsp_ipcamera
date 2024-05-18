@@ -3,7 +3,7 @@ Tự động tìm  kiếm các ip của camera và kết nối camera (tối đa
 Vì vậy số lượng 6 camera là điều kiện lý tưởng cho việc hoạt động của máy tính để có thể xem được phần mềm  
 Phần mềm không cần kết nối mạng, nên đảm bảo không thể phát tán, leak hình ảnh từ camera cho người khác  
 ## Sơ đồ kết nối camera với máy tính  
-![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/beef2de0-9ffb-4c49-b093-fecd7fcff8e5)
+![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/6baf559c-2890-4456-8e28-071cb6d8e8e5)
 
 ## Bắt đầu:
 1. Tải về thư mục `DucQuan` và giải nén ra
