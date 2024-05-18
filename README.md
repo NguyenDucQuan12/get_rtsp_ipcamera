@@ -15,7 +15,9 @@ Bước 1: Tạo môi trường ảo `.camera_venv` bên trong thư mục `DucQu
 Bước 2: Kích hoạt môi trường ảo:  
 `.camera_app\Scripts\activate`  
 Nếu mà không kích hoạt được ở `terminal` thì cần chạy lệnh này trước khi chạy lại lệnh trên: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`  
-Bước 3: Chuyển tất cả các file trong thư mục `DucQuan` vào thư mục `.camera_app`, lưu ý để lại file `requirements.txt`  
+Bước 3: Chuyển tất cả các file trong thư mục `DucQuan` vào thư mục `.camera_app`, lưu ý để lại file `requirements.txt`
+![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/0ea8d330-d6f8-41cb-bb96-a9e181996355)
+
 Bước 4: Cài đặt các thư viện cần thiết:  
 `python -m pip install -r requirements.txt`  
 Nếu có chỉnh sửa, thay đổi thư viện thì thêm vào file bằng câu lệnh sau: `python -m pip freeze > requirements.txt`  
