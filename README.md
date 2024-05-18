@@ -19,3 +19,10 @@ Nếu xuất hiện lỗi: `pip: Fatal error in ...` thì chạy 2 lệnh sau đ
 `python -m pip freeze`  
 Bước 5: Chạy phần mềm:  
 `pyhon .camera_app\main.py`  lần đầu sẽ tìm kiếm các ip, từ lần sau sẽ tự động hiển thị các ip đã có
+## Hình ảnh phần mềm  
+![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/39b22eb6-b92b-4af1-a773-947caf1f6446)
+
+![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/3254b7fd-804d-4431-b1ae-0303ecca56f3)
+
+## Các camera đã thử nghiệm  
+### Dmax : Dmax DMC 2036BZW, Dmax DMC 2054 BZW
