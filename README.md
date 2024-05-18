@@ -1,7 +1,7 @@
 # get_rtsp_ipcamera
-Tự động tìm  kiếm các ip của camera và kết nối camera (tối đa 6 thiết bị camera), lượng CPU tiêu thụ nếu không sử dụng chức năng theo dõi là 5% một camera, nếu ghi hình lị là 9-10% CPU cho một camera  
+Tự động tìm  kiếm các ip của camera và kết nối camera (tối đa 6 thiết bị camera), lượng CPU tiêu thụ nếu không sử dụng chức năng theo dõi là 5% một camera, nếu ghi hình liên tục là 9-10% CPU cho một camera  
 Vì vậy số lượng 6 camera là điều kiện lý tưởng cho việc hoạt động của máy tính để có thể xem được phần mềm  
-Phần mềm không cần kết nối mạng, nên đảm bảo không thể phát tán, leak hình ảnh từ camera cho người khác  
+`*Phần mềm không cần kết nối mạng, nên đảm bảo không thể phát tán, leak hình ảnh từ camera cho người khác*`  
 ## Sơ đồ kết nối camera với máy tính  
 ![image](https://github.com/NguyenDucQuan12/get_rtsp_ipcamera/assets/68120446/6baf559c-2890-4456-8e28-071cb6d8e8e5)
 
